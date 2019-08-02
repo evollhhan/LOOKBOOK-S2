@@ -2,15 +2,13 @@ const path = require('path');
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 //
 // CONST
 // ---
 const PATH = p => path.resolve(__dirname, p);
 const PATH_DOC = PATH('./doc');
 const PATH_SRC = PATH('./src');
-const PATH_OUTPUTHTML = PATH('./doc/index.html');
-const PATH_TEMPLATE = PATH('./index.html');
 
 //
 // DevServer
@@ -18,9 +16,8 @@ const PATH_TEMPLATE = PATH('./index.html');
 const devServer = {
   host: '0.0.0.0',
   port: 3000,
-  open: true,
+  open: false,
   disableHostCheck: true,
-  contentBase: PATH_DOC,
   clientLogLevel: 'error',
   overlay: {
     warnings: false,
@@ -48,13 +45,8 @@ const rules = (IS_PROD) => [
   },
   {
     test: /\.js$/,
-    use: [{
-      loader: 'babel-loader'
-    }],
-    include: [
-      PATH_SRC,
-      PATH('node_modules/webpack-dev-server/client')
-    ]
+    use: ['babel-loader'],
+    include: [PATH_SRC, PATH('node_modules/webpack-dev-server/client')]
   },
   {
     test: /\.(scss|css)$/,
@@ -90,21 +82,22 @@ const rules = (IS_PROD) => [
 const plugins = (IS_PROD) => {
   const list = [
     new HtmlWebPackPlugin({
-      template: PATH_TEMPLATE,
-      filename: PATH_OUTPUTHTML,
-      chunks: ['app']
+      template: 'index.html',
+      filename: 'index.html',
+      inject: true
     }),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': IS_PROD ? JSON.stringify('production') : JSON.stringify('development')
-    })
+      'process.env.NODE_ENV': IS_PROD ? '"production"' : '"development"'
+    }),
+    new FriendlyErrorsPlugin()
   ];
 
   if (IS_PROD) {
 
   } else {
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    list.push(new webpack.HotModuleReplacementPlugin());
   }
 
   return list;
@@ -121,10 +114,10 @@ module.exports = (env, argv) => {
     mode: argv.mode,
     output: {
       path: PATH_DOC,
-      filename: '[name].bundle.js',
-      publicPath: './'
+      filename: '[name].js',
+      publicPath: '/'
     },
-    devtool: IS_PROD ? '' : 'source-map',
+    devtool: '#cheap-eval-source-map',
     resolve: {
       extensions: ['.js', '.ts', '.tsx', '.json']
     },
@@ -132,14 +125,6 @@ module.exports = (env, argv) => {
     module: {
       rules: rules(IS_PROD)
     },
-    plugins: plugins(IS_PROD),
-    node: {
-      setImmediate: false,
-      dgram: 'empty',
-      fs: 'empty',
-      net: 'empty',
-      tls: 'empty',
-      child_process: 'empty'
-    }
+    plugins: plugins(IS_PROD)
   }
 };
