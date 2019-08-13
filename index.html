@@ -37,6 +37,7 @@
     letter-spacing: .4em;
     transition: .3s linear;
     transform: translate3d(0, 10%, 0);
+    font-family: Arial, Helvetica, sans-serif;
     opacity: 0;
   }
   .progress {
@@ -68,6 +69,11 @@
   @keyframes DisplayState {
     0%, 40%, 100% { background: #222; }
     5%, 35% { background: #ccc; }
+  }
+  @media screen and (max-width: 750px) {
+    .loading .title {
+      font-size: 10vw;
+    }
   }
   </style>
   <title>LOOKBOOK S2</title>

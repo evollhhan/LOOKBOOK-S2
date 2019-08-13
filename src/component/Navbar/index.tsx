@@ -6,6 +6,7 @@ function Navbar () {
   const { nav, selectedNav, selectNav } = useNav();
   return (
     <div className={style.navbar}>
+      <div className={style.logo}>LOOKBOOK S2</div>
       {
         nav.map((item, index) =>
           <div className={`${style.item} ${item.title === selectedNav ? style.active : ''}`}
