@@ -65,14 +65,31 @@ const rules = (IS_PROD) => [
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              localIdentName: '[name]_[local]_[hash:base64:4]'
+              modules: {
+                localIdentName: IS_PROD ? '[hash:base64]' : '[hash:base64:4]_[local]'
+              }
             },
           },
           'sass-loader'
         ]
       }
     ]
+  },
+  // {
+  //   test: /\.(ttf)$/,
+  //   use: [{
+  //     loader: 'url-loader',
+  //     options: {
+  //       name: '[name]-[hash:4].min.[ext]',
+  //       limit: 1000
+  //     }
+  //   }]
+  // },
+  {
+    test: /\.(ttf)$/,
+    use: [{
+      loader: 'file-loader'
+    }]
   }
 ];
 

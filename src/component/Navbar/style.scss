@@ -1,0 +1,59 @@
+.navbar {
+  position: absolute;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 120px;
+  height: 100vh;
+  color: #999;
+  line-height: 60px;
+  font-size: 13px;
+  z-index: 10;
+
+  .item {
+    position: relative;
+    margin-right: 16px;
+    transition: .4s ease;
+    text-align: center;
+    animation: NavItemEnter .4s ease backwards;
+    opacity: 1;
+
+    &::before {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      margin-left: -40%;
+      content: '';
+      display: block;
+      width: 80%;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, .2);
+      transition: .3s ease;
+      transform: rotate(-10deg) scaleX(0);
+    }
+
+    &.active,
+    &:hover {
+      color: #efefef;
+    }
+
+    &.active{
+      &::before {
+        transform: rotate(-10deg) scaleX(1);
+      }
+    }
+  }
+}
+
+@keyframes NavItemEnter {
+  0% {
+    transform: translate3d(-20%, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}

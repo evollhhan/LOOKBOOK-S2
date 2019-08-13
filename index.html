@@ -9,11 +9,90 @@
   <meta id="WV.Meta.DisableRefresh" value="true">
   <meta id="WV.Meta.StopBounces" value="true">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"/>
+  <style>
+  html { user-select: none; }
+  body, html { margin: 0; padding: 0; background: #222; }
+  .loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+  }
+  .loading.enter .title {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  .loading.leave .title {
+    transform: translate3d(0, -20%, 0);
+  }
+  .loading .title {
+    position: relative;
+    left: .2em;
+    top: 40%;
+    font-size: 72px;
+    color: #ccc;
+    text-align: center;
+    letter-spacing: .4em;
+    transition: .3s linear;
+    transform: translate3d(0, 10%, 0);
+    opacity: 0;
+  }
+  .progress {
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    text-align: center;
+  }
+  .loading .bar {
+    position: relative;
+    display: inline-block;
+    margin: 0 6px;
+    width: 10px;
+    height: 10px;
+    animation: DisplayState 1.8s linear infinite;
+  }
+  .loading .bar::before {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2d2d2d;
+    box-sizing: border-box;
+  }
+  @keyframes DisplayState {
+    0%, 40%, 100% { background: #222; }
+    5%, 35% { background: #ccc; }
+  }
+  </style>
   <title>LOOKBOOK S2</title>
 </head>
 
 <body>
+  <div class="loading">
+    <div class="title">LOOKBOOK</div>
+    <div class="progress">
+      <div class="bar" style="animation-delay:.1s"></div>
+      <div class="bar" style="animation-delay:.3s"></div>
+      <div class="bar" style="animation-delay:.5s"></div>
+      <div class="bar" style="animation-delay:.7s"></div>
+    </div>
+  </div>
   <div id="app"></div>
 </body>
+
+<script>
+  var loading = document.querySelector('.loading');
+  setTimeout(function () { loading.className = 'loading enter' }, 50);
+  window.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () { loading.className = 'loading leave' }, 800);
+    setTimeout(function () { loading.style.display = 'none' }, 1200);
+  });
+</script>
 
 </html>
