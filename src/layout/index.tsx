@@ -15,5 +15,5 @@ function Main () {
 }
 
 // Wait for Transition End
-setTimeout(() => Main(), 1000);
-// Main();
+// setTimeout(() => Main(), 1000);
+Main();

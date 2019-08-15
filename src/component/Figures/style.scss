@@ -1,0 +1,26 @@
+.musicAr {
+  .hand {
+    fill: #fff;
+  }
+
+  .line {
+    stroke: #aaa;
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 420;
+    stroke-dashoffset: 1260;
+    animation: MusicArLineIn 3.2s linear forwards infinite;
+  }
+}
+
+@keyframes MusicArLineIn {
+  0% {
+    stroke-dashoffset: 1260;
+  }
+  50% {
+    stroke-dashoffset: 840;
+  }
+  100% {
+    stroke-dashoffset: 420;
+  }
+}

@@ -15,7 +15,7 @@
 .sideLeftBoard {
   left: -120vw;
   width: 100vw;
-  background: rgba(0, 0, 0, .15);
+  background: linear-gradient(to right, #222 60%, #666);
   transform: rotate3d(0, 1, 0, 90deg);
   transform-origin: 100% 0;
 }
@@ -29,12 +29,12 @@
 .mainBoard {
   left: -20vw;
   width: 100vw;
-  background: rgba(255, 255, 255, .1);
+  background: linear-gradient(to right, #666, #222);
   transform-origin: 100% 0;
 
   .projectTitle {
     right: 10vw;
-    // animation: MainTitleLeave 4s linear;
+    animation: MainTitleLeave 4s linear;
   }
 }
 
@@ -48,7 +48,7 @@
   .projectTitle {
     left: -10vw;
     transform: translate3d(-100%, 0, 0);
-    // animation: SideTitleLeave 4s linear;
+    animation: SideTitleLeave 4s linear;
   }
 }
 
@@ -98,21 +98,48 @@
     left: 0;
     width: 100vw;
     height: calc(100vh - 60px);
-    background: linear-gradient(to bottom, #222, #444);
+    background: linear-gradient(to bottom, #222, #666);
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
+    text-align: center;
     overflow: auto;
   }
 
-  .slogan {
+  .projectItem {
     position: relative;
+    height: calc(100vh - 60px);
+  }
+
+  .slogan {
+    position: absolute;
     padding-top: 32px;
-    bottom: auto;
-    padding-left: 6vw;
+    padding-left: 0;
+    bottom: 16vh;
+    width: 100%;
     font-size: 12vw;
   }
 
-  .projectItem {
-    height: calc(100vh - 60px);
+  .content {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    margin-left: -20vh;
+    width: 40vh;
+    height: 40vh;
+    background: linear-gradient(to bottom, #212121, #474747);
+    border-radius: 50%;
+  }
+
+  .slogan > p {
+    text-align: center;
+    color: #444;
+  }
+
+  .projectItem.end {
+    padding-top: 36vh;
+    padding-left: .6em;
+    font-size: 6vw;
+    letter-spacing: .2em;
+    box-sizing: border-box;
   }
 }
