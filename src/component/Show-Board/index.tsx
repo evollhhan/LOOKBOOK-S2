@@ -24,7 +24,7 @@ const MainBoard = () => {
               {
                 (() => {
                   const Fig = FIGURES[index];
-                  return Fig ? <Fig /> : null;
+                  return Fig ? <Fig title={item.name} /> : null;
                 })()
               }
             </div>
