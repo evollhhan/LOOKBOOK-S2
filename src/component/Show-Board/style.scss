@@ -75,7 +75,6 @@
 }
 
 .slogan {
-  position: absolute;
   padding-left: 8vw;
   bottom: 20vh;
   font-size: 64px;
@@ -94,10 +93,9 @@
 
   div.mainBoard {
     position: relative;
-    top: 60px;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background: linear-gradient(to bottom, #222, #666);
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
@@ -107,32 +105,32 @@
 
   .projectItem {
     position: relative;
+    top: 60px;
     height: calc(100vh - 60px);
   }
 
   .slogan {
-    position: absolute;
-    padding-top: 32px;
-    padding-left: 0;
-    bottom: 16vh;
+    margin-top: 2vh;
     width: 100%;
-    font-size: 12vw;
+    color: #444;
+    letter-spacing: .08em;
+    text-align: left;
+
+    .primary {
+      font-size: 12vw;
+      width: 80%;
+      margin-bottom: .2em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+    }
+
+    .secondary {
+      padding-left: .1em;
+      font-size: 5.2vw;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+    }
   }
 
   .content {
-    position: absolute;
-    top: 10vh;
-    left: 50%;
-    margin-left: -20vh;
-    width: 40vh;
-    height: 40vh;
-    background: linear-gradient(to bottom, #212121, #474747);
-    border-radius: 50%;
-  }
-
-  .slogan > p {
-    text-align: center;
-    color: #444;
   }
 
   .projectItem.end {

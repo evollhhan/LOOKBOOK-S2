@@ -20,6 +20,10 @@ const MainBoard = () => {
       {
         PROJECTS.map((item, index) =>
           <div className={style.projectItem} key={item.tag}>
+            <div className={style.slogan}>
+              <p className={style.primary}>{item.name}</p>
+              <p className={style.secondary}>MAKE IT <span style={{ fontWeight: 'bold' }}>{item.tag}</span></p>
+            </div>
             <div className={style.content}>
               {
                 (() => {
@@ -27,10 +31,6 @@ const MainBoard = () => {
                   return Fig ? <Fig title={item.name} /> : null;
                 })()
               }
-            </div>
-            <div className={style.slogan}>
-              <p>MAKE IT</p>
-              <p>{item.tag}</p>
             </div>
           </div>
         )
