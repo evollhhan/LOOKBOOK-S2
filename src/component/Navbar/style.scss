@@ -75,6 +75,10 @@
 
     &.unFold {
       transform: translate3d(0, 0, 0);
+
+      .home {
+        opacity: 0;
+      }
     }
 
     .item {
@@ -95,11 +99,23 @@
 
     .home {
       position: absolute;
-      display: block;
-      top: -98vh;
-      left: 5vw;
-      width: 6vw;
+      display: flex;
+      padding: 0 8vw;
+      align-items: center;
+      justify-content: space-between;
+      top: -96vh;
+      left: 0;
+      width: 100vw;
       height: 6vw;
+      transition: .4s .3s ease;
+      font-size: 4.8vw;
+      box-sizing: border-box;
+      color: #fff;
+      letter-spacing: .2em;
+
+      svg {
+        height: 4.8vw;
+      }
     }
 
     .logo {

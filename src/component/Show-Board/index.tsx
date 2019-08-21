@@ -1,12 +1,14 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import style from './style.scss';
 import { PROJECTS } from '../../store/use-project';
-import Starter from '../Figures/Starter';
 import MusicAr from '../Figures/Music-Ar';
+import NewYear from '../Figures/New-Year';
+import ObserveContent from '../ObserveContent';
 
 
 const FIGURES: any[] = [
-  MusicAr
+  MusicAr,
+  NewYear
 ];
 
 const SideLeftBoard = memo(() => {
@@ -15,30 +17,43 @@ const SideLeftBoard = memo(() => {
   )
 });
 
+interface ISlogan {
+  name: string;
+  tag: string;
+  index: number;
+}
+
+const Slogan = memo((props: ISlogan) => {
+  const key = 'slogan-' + props.index;
+  const [status, updateStatus] = useState(false);
+
+  useEffect(() => {
+    const target = document.querySelector('.' + key)! as HTMLElement;
+    const observer = new ObserveContent(target);
+    observer.onShow = () => updateStatus(true);
+    observer.onHide = () => updateStatus(false);
+    observer.observe();
+    return (() => {
+      observer.unobserve();
+    })
+  }, []);
+
+  return (
+    <div className={`${style.slogan} ${key} ${status === true ? style.active : ''}`}>
+      <p className={style.primary}>{props.name}</p>
+      <p className={style.secondary}>MAKE IT <span style={{ fontWeight: 'bold' }}>{props.tag}</span></p>
+    </div>
+  )
+})
+
 const MainBoard = () => {
   return (
-    <div className={style.mainBoard}>
+    <div id="main" className={style.mainBoard}>
       {/* <span className={style.projectTitle}>HELLO WORLD</span> */}
-      <div className={style.projectItem}>
-        <div className={style.titleArea}>
-          <div className={style.sectionTitle}>PROJECTS</div>
-          <div className={style.subTitle}>项目集</div>
-        </div>
-        <div className={style.projectDesc}>
-          <p>一个好的作品不仅只是网页</p>
-          <p>更是一次有温度的触碰</p>
-          <p>一次眼、手与耳的旅行</p>
-          <p>一种美学的探索</p>
-        </div>
-        <Starter />
-      </div>
       {
         PROJECTS.map((item, index) =>
           <div className={style.projectItem} key={item.tag}>
-            <div className={style.slogan}>
-              <p className={style.primary}>{item.name}</p>
-              <p className={style.secondary}>MAKE IT <span style={{ fontWeight: 'bold' }}>{item.tag}</span></p>
-            </div>
+            <Slogan name={item.name} tag={item.tag} index={index} />
             <div className={style.content}>
               {
                 (() => {

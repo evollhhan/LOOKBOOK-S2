@@ -15,10 +15,7 @@ html,body {
 @media screen and (max-width: 750px) {
   #app {
     position: relative;
+    min-height: 100%;
     overflow: hidden;
-  }
-
-  html, body {
-    background: #111;
   }
 }

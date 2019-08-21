@@ -100,7 +100,8 @@
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     text-align: center;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   .titleArea {
@@ -138,7 +139,7 @@
   .projectItem {
     position: relative;
     top: 60px;
-    height: calc(100vh - 60px);
+    height: 110vh;
   }
 
   .slogan {
@@ -148,17 +149,31 @@
     letter-spacing: .08em;
     text-align: left;
 
+    &.active {
+      .primary {
+        color: #f6f6f6;
+        transition: .6s .6s ease;
+      }
+
+      .secondary {
+        color: #eee;
+        transition: .6s .6s ease;
+      }
+    }
+
     .primary {
-      font-size: 12vw;
+      font-size: 16vw;
       width: 80%;
       margin-bottom: .2em;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+      transition: .6s ease;
     }
 
     .secondary {
       padding-left: .1em;
       font-size: 5.2vw;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+      transition: .6s ease;
     }
   }
 

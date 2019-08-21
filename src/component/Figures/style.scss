@@ -38,3 +38,15 @@
     transition: 1.2s ease;
   }
 }
+
+.newyear {
+  position: relative;
+  height: 60vh;
+  opacity: .2;
+
+  svg {
+    position: absolute;
+    top: 2vh;
+    right: 6vw;
+  }
+}

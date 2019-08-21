@@ -5,8 +5,8 @@ function useNav () {
   const [selectedNav, updateSelectedNav] = useState('PROJECT');
   const [showMobileNav, setMobileNavStatus] = useState(false);
   const [nav] = useState([
-    { title: 'PROJECT' },
     { title: 'PROFILE' },
+    { title: 'PROJECT' },
     { title: 'ABOUT' }
   ]);
 
