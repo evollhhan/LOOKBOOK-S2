@@ -3,12 +3,15 @@ import style from './style.scss';
 import { PROJECTS } from '../../store/use-project';
 import MusicAr from '../Figures/Music-Ar';
 import NewYear from '../Figures/New-Year';
+import Buyer from '../Figures/Buyer';
 import ObserveContent from '../ObserveContent';
-
+import ShelfRobot from '../Figures/Shelf-Robot';
 
 const FIGURES: any[] = [
   MusicAr,
-  NewYear
+  NewYear,
+  Buyer,
+  ShelfRobot
 ];
 
 const SideLeftBoard = memo(() => {
@@ -65,6 +68,14 @@ const MainBoard = () => {
           </div>
         )
       }
+      <div className={`${style.projectItem} ${style.moreProject}`}>
+        <p>And More...</p>
+        <p>双十一回忆</p>
+        <p>世界杯集卡活动</p>
+        <p>野生小伙伴</p>
+        <p>淘金币</p>
+        <p>淘宝人生</p>
+      </div>
       <div className={`${style.projectItem} ${style.end}`}>
         MAKE IT POSSIBLE.
       </div>

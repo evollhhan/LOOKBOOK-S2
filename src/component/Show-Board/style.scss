@@ -158,6 +158,11 @@
       .secondary {
         color: #eee;
         transition: .6s .6s ease;
+
+        span::before {
+          transition: .6s .8s ease;
+          transform: scaleX(1);
+        }
       }
     }
 
@@ -174,11 +179,39 @@
       font-size: 5.2vw;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
       transition: .6s ease;
+
+      span {
+        position: relative;
+      }
+
+      span::before {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        width: 100%;
+        height: 3vw;
+        background: rgba(255, 255, 255, .2);
+        transition: .4s ease;
+        transform-origin: 0 0;
+        transform: scaleX(0);
+      }
     }
   }
 
+  .moreProject {
+    padding-top: 20vh;
+    height: 100vh;
+    color: #666;
+    line-height: 2;
+    padding-bottom: 20vh;
+    box-sizing: border-box;
+    letter-spacing: .1em;
+    font-size: 6vw;
+  }
+
   .projectItem.end {
-    padding-top: 36vh;
+    height: 100vh;
+    padding-top: 46vh;
     padding-left: .6em;
     font-size: 6vw;
     letter-spacing: .2em;

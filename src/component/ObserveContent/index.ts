@@ -41,6 +41,18 @@ export default class ObserveContent {
     this.target = target;
   }
 
+  static forceUpdate () {
+    if (!downGrade) return;
+    checkList.forEach(target => {
+      target.updatePosition();
+    })
+    checkScrollPosition();
+  }
+
+  updatePosition () {
+    this.position = this.target.getBoundingClientRect().top;
+  }
+
   observe () {
     if (downGrade) {
       this.position = this.target.getBoundingClientRect().top;

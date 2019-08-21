@@ -1,28 +1,3 @@
-.starter {
-  position: relative;
-  top: -12vh;
-  .line {
-    stroke: #555;
-    stroke-width: 2;
-    fill: none;
-    stroke-dasharray: 420;
-    stroke-dashoffset: 1260;
-    animation: MusicAr_LineFlow 3.2s linear forwards infinite;
-  }
-}
-
-@keyframes MusicAr_LineFlow {
-  0% {
-    stroke-dashoffset: 1260;
-  }
-  50% {
-    stroke-dashoffset: 840;
-  }
-  100% {
-    stroke-dashoffset: 420;
-  }
-}
-
 .musicAr {
   position: absolute;
   right: -2vw;
@@ -49,4 +24,20 @@
     top: 2vh;
     right: 6vw;
   }
+}
+
+.buyer {
+  position: absolute;
+  right: 4vw;
+  bottom: 4vh;
+  height: 76vh;
+  opacity: .2;
+}
+
+.shelfRobot {
+  position: absolute;
+  right: 4vw;
+  bottom: 4vh;
+  height: 70vh;
+  opacity: .15;
 }
