@@ -12,9 +12,9 @@ export default function Profile (props: IProps) {
       <p>主要负责一些大促类活动和常规运营的互动项目</p>
       <div className={style.title}>心路历程</div>
       <p>和同事成为好伙伴，共同进步才能拧出航空母舰</p>
-      <p>和设计师成好伙伴，去培养自己的美感，去实现天马行空的动效</p>
-      <p>和产品成为好伙伴，和他们交流，探讨，加深对于产品的思考</p>
-      <p>和服务端成为好伙伴，语言不同，思想却可以融会贯通</p>
+      <p>和设计成好伙伴，去培养自己的美感，实现天马行空的动效</p>
+      <p>和产品成为好伙伴，和他们交流探讨，加深对于产品的思考</p>
+      <p>和后端成为好伙伴，语言不同，思想却可以融会贯通</p>
       <p>和自己成为好伙伴，做自己的Leader，做自己的Backup</p>
       <div className={style.title}>同事之声</div>
       <div className={style.subTitle}>以下内容有吹牛之嫌</div>

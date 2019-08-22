@@ -6,9 +6,7 @@ function Navbar () {
   const { nav, selectedNav, selectNav, toggleMobileNav, showMobileNav } = useNav();
 
   const navbarStatus = useMemo(() => {
-    const status = showMobileNav ? style.unFold : '';
-    document.body.style.background = status ? '#111' : '';
-    return status;
+    return showMobileNav ? style.unFold : '';
   }, [showMobileNav]);
 
   return (

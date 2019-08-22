@@ -1,22 +1,30 @@
 let parent: HTMLElement | null = null;
 let checkList: ObserveContent[] = [];
+let scrollTop: number = 0;
+let scrollIndex: number = 0;
 // @ts-ignore
-let downGrade: boolean = window.IntersectionObserver === undefined;
+let downGrade: boolean = true;
+
+function checkParent () {
+  if (!parent) {
+    parent = document.getElementById('main')!;
+  }
+}
 
 function createScrollListener () {
-  parent = document.getElementById('main')!;
-  parent.onscroll = function (e) {
+  checkParent();
+  parent!.onscroll = function (e) {
+    scrollTop = parent!.scrollTop;
     checkScrollPosition();
   }
 }
 
-function checkScrollPosition () {
-  const top = parent!.scrollTop;
+function checkScrollPosition (index?: number) {
   const height = window.innerHeight * 1.1;
-  checkList.forEach(target => {
-    const visible =
-      top <= target.position &&
-      (top + height * 0.4) >= target.position
+  checkList.forEach((target, idx) => {
+    const visible = index === undefined
+      ? ( scrollTop <= target.position && (scrollTop + height * 0.4) >= target.position )
+      : ( idx === index );
     if (visible && !target.show) {
       target.onShow && target.onShow();
       target.show = true;
@@ -26,6 +34,27 @@ function checkScrollPosition () {
       target.show = false;
     }
   })
+}
+
+function setTransformPosition (direction: number) {
+  checkParent();
+  if (direction < 0) {
+    scrollIndex = Math.max(-5, scrollIndex + direction);
+  }
+  if (direction > 0) {
+    scrollIndex = Math.min(scrollIndex + direction, 0);
+  }
+  parent!.style.transform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
+  parent!.style.webkitTransform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
+  checkScrollPosition(0 - scrollIndex);
+}
+
+window.onresize = function () {
+  if (window.innerWidth < 750) {
+    scrollIndex = 0;
+    parent!.style.transform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
+    parent!.style.webkitTransform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
+  }
 }
 
 export default class ObserveContent {
@@ -47,6 +76,10 @@ export default class ObserveContent {
       target.updatePosition();
     })
     checkScrollPosition();
+  }
+  
+  static setTransformPosition (direction: number) {
+    setTransformPosition(direction);
   }
 
   updatePosition () {

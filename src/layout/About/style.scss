@@ -9,6 +9,10 @@
   }
 }
 
+.hint {
+  margin: 2vh 0;
+}
+
 .copyright {
   color: #999;
   font-size: 2.4vw;
@@ -20,7 +24,7 @@
 
 @media screen and (min-width: 750px) {
   .about {
-    padding-top: 180px;
+    padding-top: 100px;
     padding-right: 80px;
     text-align: right;
     font-size: 16px;

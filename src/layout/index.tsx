@@ -54,15 +54,14 @@ declare global {
 }
 
 const timeExpired = Date.now() - window.PageLoadStartTime;
-const timeRest = Math.max(5000 - timeExpired, 0);
+const timeRest = Math.max(4200 - timeExpired, 0);
 
 // Wait for Transition End
-// setTimeout(() => {
-//   const loading = document.querySelector('.loading')! as HTMLElement;
-//   loading.className += ' leave';
-//   setTimeout(() => {
-//     loading.style.display = 'none';
-//     Main();
-//   }, 400);
-// }, timeRest);
-Main();
+setTimeout(() => {
+  const loading = document.querySelector('.loading')! as HTMLElement;
+  loading.className += ' leave';
+  Main();
+  setTimeout(() => {
+    loading.style.display = 'none';
+  }, 400);
+}, timeRest);
