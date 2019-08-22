@@ -117,6 +117,9 @@ const plugins = (IS_PROD) => {
         filename: '[name].css'
       })
     )
+    // list.push(
+    //   new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+    // )
   } else {
     list.push(new webpack.HotModuleReplacementPlugin());
   }
@@ -136,7 +139,7 @@ module.exports = (env, argv) => {
     output: {
       path: PATH_DOC,
       filename: '[name].js',
-      publicPath: '/'
+      publicPath: '/LOOKBOOK-S2/'
     },
     devtool: '#cheap-eval-source-map',
     resolve: {
