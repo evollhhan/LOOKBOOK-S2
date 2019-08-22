@@ -7,7 +7,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 // CONST
 // ---
 const PATH = p => path.resolve(__dirname, p);
-const PATH_DOC = PATH('./doc');
+const PATH_DOC = PATH('./docs');
 const PATH_SRC = PATH('./src');
 
 //
