@@ -2,6 +2,11 @@
   color: #c6c6c6;
   box-sizing: border-box;
   line-height: 2;
+  user-select: text;
+
+  a {
+    color: #999;
+  }
 }
 
 .copyright {
@@ -15,8 +20,9 @@
 
 @media screen and (min-width: 750px) {
   .about {
-    padding-top: 120px;
-    padding-left: 220px;
+    padding-top: 180px;
+    padding-right: 80px;
+    text-align: right;
     font-size: 16px;
 
     &.active {
@@ -32,11 +38,9 @@
 
 @keyframes showContent {
   0% {
-    transform: translate3d(6px, 6px, 0);
     opacity: 0;
   }
   100% {
-    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }

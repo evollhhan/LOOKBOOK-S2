@@ -47,7 +47,6 @@ const Slogan = memo((props: ISlogan) => {
 export default function showBoard() {
   return (
     <div id="main" className={`${style.board} ${style.override}`}>
-      {/* <span className={style.projectTitle}>HELLO WORLD</span> */}
       {
         PROJECTS.map((item, index) =>
           <div className={style.projectItem} key={item.tag}>

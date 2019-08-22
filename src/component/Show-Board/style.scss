@@ -1,28 +1,6 @@
-.projectTitle {
-  position: absolute;
-  top: 24vh;
-  font-size: 64px;
-}
-
 .board {
   left: -20vw;
   width: 100vw;
-  background: linear-gradient(to right, #666, #222);
-  transform-origin: 100% 0;
-
-  .projectTitle {
-    right: 10vw;
-    animation: MainTitleLeave 4s linear;
-  }
-}
-
-@keyframes MainTitleLeave {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(200%, 0, 0);
-  }
 }
 
 .slogan {

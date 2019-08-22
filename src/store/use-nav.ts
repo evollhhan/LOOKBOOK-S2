@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import ObserveContent from '../component/ObserveContent';
 
 function useNav () {
-  const [selectedNav, updateSelectedNav] = useState('PROJECT');
+  const [selectedNav, updateSelectedNav] = useState('ABOUT');
   const [showMobileNav, setMobileNavStatus] = useState(false);
   const [nav] = useState([
     { title: 'PROFILE' },
