@@ -139,7 +139,7 @@ module.exports = (env, argv) => {
     output: {
       path: PATH_DOC,
       filename: '[name].js',
-      publicPath: '/LOOKBOOK-S2/'
+      publicPath: IS_PROD ? '/LOOKBOOK-S2/' : ''
     },
     devtool: '#cheap-eval-source-map',
     resolve: {
