@@ -60,6 +60,7 @@ const timeRest = Math.max(4200 - timeExpired, 0);
 setTimeout(() => {
   const loading = document.querySelector('.loading')! as HTMLElement;
   loading.className += ' leave';
+  Main();
   setTimeout(() => {
     loading.style.display = 'none';
   }, 400);
@@ -70,5 +71,3 @@ setTimeout(() => {
     }, 450);
   }
 }, timeRest);
-
-Main();
