@@ -112,7 +112,11 @@ const plugins = (IS_PROD) => {
   ];
 
   if (IS_PROD) {
-
+    list.push(
+      new MiniCssExtractPlugin({
+        filename: '[name].css'
+      })
+    )
   } else {
     list.push(new webpack.HotModuleReplacementPlugin());
   }
