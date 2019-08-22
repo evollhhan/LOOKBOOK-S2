@@ -1,8 +1,5 @@
 .about {
-  position: relative;
-  padding: 15vh 8vw 0;
-  color: #f6f6f6;
-  font-size: 3.2vw;
+  color: #c6c6c6;
   box-sizing: border-box;
   line-height: 2;
 }
@@ -13,5 +10,45 @@
 
   a {
     text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .about {
+    padding-top: 120px;
+    padding-left: 220px;
+    font-size: 16px;
+
+    &.active {
+      animation: showContent .6s .2s ease forwards;
+      opacity: 0;
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+}
+
+@keyframes showContent {
+  0% {
+    transform: translate3d(6px, 6px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .about {
+    position: relative;
+    padding: 15vh 8vw 0;
+    font-size: 3.2vw;
+  }
+
+  .copyright {
+    font-size: 2.4vw;
   }
 }

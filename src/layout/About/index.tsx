@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './style.scss';
 
-export default function About () {
+interface IProps {
+  active: boolean;
+}
+
+export default function About (props: IProps) {
   return (
-    <div className={style.about}>
+    <div className={`${style.about} ${props.active ? style.active : ''}`}>
       <p>前端</p>
       <p>就像是一支笔</p>
       <p>你可以用它来创造艺术</p>

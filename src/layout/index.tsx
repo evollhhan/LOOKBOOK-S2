@@ -7,6 +7,7 @@ import useNav from '../store/use-nav';
 import Projects from './Projects';
 import Profile from './Profile';
 import About from './About';
+import Framework from '../component/Framework';
 
 const Pages = [
   Profile,
@@ -15,7 +16,7 @@ const Pages = [
 ]
 
 const PageList = memo(() => {
-  const { nav } = useNav();
+  const { nav, selectedNav } = useNav();
   return (
     <Fragment>
       {
@@ -23,8 +24,8 @@ const PageList = memo(() => {
           <Content index={index} name={item.title} key={item.title}>
             {
               (() => {
-                const Page = Pages[index];
-                return Page ? <Page /> : null;
+                const Page = Pages[index] as any;
+                return Page ? <Page active={item.title === selectedNav} /> : null;
               })()
             }
           </Content>
@@ -38,7 +39,9 @@ function Main() {
   ReactDOM.render(
     <Store>
       <Navbar />
-      <PageList />
+      <Framework>
+        <PageList />
+      </Framework>
     </Store>,
     document.getElementById('app')
   );

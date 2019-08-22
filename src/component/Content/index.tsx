@@ -20,7 +20,7 @@ export default function Content (props: IContent) {
       `${style['section-' + props.index]} ` +
       `${props.name === selectedNav ? style.active : ''} ` +
       `${status}`
-  }, [status, props.name]);
+  }, [status, props.name, selectedNav]);
 
   return (
     <div className={`${contentClassName}`}>

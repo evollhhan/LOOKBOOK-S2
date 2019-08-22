@@ -14,11 +14,6 @@ const FIGURES: any[] = [
   ShelfRobot
 ];
 
-const SideLeftBoard = memo(() => {
-  return (
-    <div className={style.sideLeftBoard}></div>
-  )
-});
 
 interface ISlogan {
   name: string;
@@ -49,9 +44,9 @@ const Slogan = memo((props: ISlogan) => {
   )
 })
 
-const MainBoard = () => {
+export default function showBoard() {
   return (
-    <div id="main" className={style.mainBoard}>
+    <div id="main" className={`${style.board} ${style.override}`}>
       {/* <span className={style.projectTitle}>HELLO WORLD</span> */}
       {
         PROJECTS.map((item, index) =>
@@ -68,7 +63,7 @@ const MainBoard = () => {
           </div>
         )
       }
-      <div className={`${style.projectItem} ${style.moreProject}`}>
+      <div className={`${style.projectItem} ${style.more}`}>
         <p>And More...</p>
         <p>双十一回忆</p>
         <p>世界杯集卡活动</p>
@@ -82,21 +77,3 @@ const MainBoard = () => {
     </div>
   )
 };
-
-const SideRightBoard = () => {
-  return (
-    <div className={style.sideRightBoard}>
-      {/* <span className={style.projectTitle}>HELLO WORLD</span> */}
-    </div>
-  )
-};
-
-export default function ShowBorad() {
-  return (
-    <div className={style.showboard}>
-      <SideLeftBoard />
-      <MainBoard />
-      <SideRightBoard />
-    </div>
-  )
-}

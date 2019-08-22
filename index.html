@@ -36,6 +36,7 @@
     width: 100vw;
     top: 50%;
     margin-top: -50vw;
+    z-index: -1;
   }
   .time-line {
     stroke: #4c4c4c;
@@ -75,7 +76,6 @@
   .pageHeader .subTitle {
     padding-left: .1em;
     font-size: 4.8vw;
-    text-align: left;
     color: #aaa;
     letter-spacing: .1em;
   }
@@ -107,6 +107,30 @@
     100% {
       transform: translateY(0);
       opacity: 1;
+    }
+  }
+  @media screen and (min-width: 750px) {
+    .timeline-panel {
+      top: 52vh;
+    }
+    .time-line {
+      stroke-width: 1;
+    }
+    .pageHeader {
+      text-align: center;
+    }
+    .pageHeader .mainTitle {
+      font-size: 64px;
+      letter-spacing: .5em;
+    }
+    .pageHeader .subTitle {
+      font-size: 24px;
+    }
+    .pageSlogan {
+      right: 0;
+      width: 100%;
+      font-size: 16px;
+      text-align: center;
     }
   }
   </style>

@@ -1,16 +1,30 @@
 .content {
-  position: relative;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
   perspective: 1200px;
   perspective-origin: 50% 50vh;
 }
 
+@media screen and (min-width: 750px) {
+  .content {
+    background: #2d2d2d;
+    transform: translate3d(100%, 0, 0);
+
+    &.active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    &.section-0 {
+      z-index: 12;
+    }
+  }
+}
+
 @media screen and (max-width: 750px) {
   .content {
-    position: absolute;
-    top: 0;
     perspective: none;
-    width: 100vw;
-    height: 100vh;
     overflow: scroll;
     background: linear-gradient(to bottom, #1c1c1c, #6a6a6a);
     transform: scale(.5) translate3d(0, 200%, 0);
