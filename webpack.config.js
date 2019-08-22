@@ -114,7 +114,7 @@ const plugins = (IS_PROD) => {
   if (IS_PROD) {
     list.push(
       new MiniCssExtractPlugin({
-        filename: '[name].css'
+        filename: '[name].[hash:4].css'
       })
     )
     // list.push(
@@ -138,7 +138,7 @@ module.exports = (env, argv) => {
     mode: argv.mode,
     output: {
       path: PATH_DOC,
-      filename: '[name].js',
+      filename: IS_PROD ? '[name].[hash:4].js' : '[name].js',
       publicPath: IS_PROD ? '/LOOKBOOK-S2/' : ''
     },
     devtool: '#cheap-eval-source-map',
