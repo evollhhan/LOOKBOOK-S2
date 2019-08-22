@@ -63,9 +63,12 @@ setTimeout(() => {
   setTimeout(() => {
     loading.style.display = 'none';
   }, 400);
-  setTimeout(() => {
-    document.body.style.fontFamily = `'Basic', Arial`;
-  }, 450);
+
+  if (window.innerWidth >= 750) {
+    setTimeout(() => {
+      document.body.style.fontFamily = `'Basic', Arial`;
+    }, 450);
+  }
 }, timeRest);
 
 Main();
