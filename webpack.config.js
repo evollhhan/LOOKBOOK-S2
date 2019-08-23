@@ -76,17 +76,17 @@ const rules = (IS_PROD) => [
     ]
   },
   // {
-  //   test: /\.(ttf)$/,
+  //   test: /\.(png)$/,
   //   use: [{
   //     loader: 'url-loader',
   //     options: {
   //       name: '[name]-[hash:4].min.[ext]',
-  //       limit: 1000
+  //       limit: 3000
   //     }
   //   }]
   // },
   {
-    test: /\.(ttf)$/,
+    test: /\.(ttf|png)$/,
     use: [{
       loader: 'file-loader'
     }]
@@ -144,6 +144,10 @@ module.exports = (env, argv) => {
     devtool: '#cheap-eval-source-map',
     resolve: {
       extensions: ['.js', '.ts', '.tsx', '.json']
+    },
+    externals: {
+      'react': 'React',
+      'react-dom': 'ReactDOM'
     },
     devServer,
     module: {

@@ -1,11 +1,11 @@
 {
   "name": "lookbook-s2",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "lookbook 2017 - 2019",
   "author": "evollhhan",
   "scripts": {
     "dev": "webpack-dev-server --mode development --inline --progress --config webpack.config.js",
-    "build": "node build/index.js"
+    "build": "rm -rf ./docs && node build/index.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -34,7 +34,6 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
-    "qrcode": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hookie-store": "^1.0.2"
