@@ -56,18 +56,20 @@ declare global {
 const timeExpired = Date.now() - window.PageLoadStartTime;
 const timeRest = Math.max(4200 - timeExpired, 0);
 
-// Wait for Transition End
-setTimeout(() => {
-  const loading = document.querySelector('.loading')! as HTMLElement;
-  loading.className += ' leave';
-  Main();
+document.addEventListener('DOMContentLoaded', e => {
+  // Wait for Transition End
   setTimeout(() => {
-    loading.style.display = 'none';
-  }, 400);
-
-  if (window.innerWidth >= 750) {
+    const loading = document.querySelector('.loading')! as HTMLElement;
+    loading.className += ' leave';
+    Main();
     setTimeout(() => {
-      document.body.style.fontFamily = `'Basic', Arial`;
-    }, 450);
-  }
-}, timeRest);
+      loading.style.display = 'none';
+    }, 400);
+
+    if (window.innerWidth >= 750) {
+      setTimeout(() => {
+        document.body.style.fontFamily = `'Basic', Arial`;
+      }, 450);
+    }
+  }, timeRest);
+});
