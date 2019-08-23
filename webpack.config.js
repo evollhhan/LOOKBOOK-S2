@@ -88,7 +88,10 @@ const rules = (IS_PROD) => [
   {
     test: /\.(ttf|png)$/,
     use: [{
-      loader: 'file-loader'
+      loader: 'file-loader',
+      options: {
+        name: '[name].[hash:4].[ext]'
+      }
     }]
   }
 ];
@@ -133,13 +136,14 @@ module.exports = (env, argv) => {
   // Export Config
   return {
     entry: {
-      app: './src/index.ts'
+      app: './src/index.js'
     },
     mode: argv.mode,
     output: {
       path: PATH_DOC,
       filename: IS_PROD ? '[name].[hash:4].js' : '[name].js',
-      publicPath: IS_PROD ? '/LOOKBOOK-S2/' : ''
+      publicPath: IS_PROD ? '/LOOKBOOK-S2/' : '',
+      chunkFilename: '[name].[hash:4].chunk.js'
     },
     devtool: '#cheap-eval-source-map',
     resolve: {

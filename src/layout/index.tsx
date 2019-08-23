@@ -35,7 +35,7 @@ const PageList = memo(() => {
   )
 });
 
-function Main() {
+export default function Main() {
   ReactDOM.render(
     <Store>
       <Navbar />
@@ -46,30 +46,3 @@ function Main() {
     document.getElementById('app')
   );
 }
-
-declare global {
-  interface Window {
-    PageLoadStartTime: number;
-  }
-}
-
-const timeExpired = Date.now() - window.PageLoadStartTime;
-const timeRest = Math.max(4200 - timeExpired, 0);
-
-document.addEventListener('DOMContentLoaded', e => {
-  // Wait for Transition End
-  setTimeout(() => {
-    const loading = document.querySelector('.loading')! as HTMLElement;
-    loading.className += ' leave';
-    Main();
-    setTimeout(() => {
-      loading.style.display = 'none';
-    }, 400);
-
-    if (window.innerWidth >= 750) {
-      setTimeout(() => {
-        document.body.style.fontFamily = `'Basic', Arial`;
-      }, 450);
-    }
-  }, timeRest);
-});

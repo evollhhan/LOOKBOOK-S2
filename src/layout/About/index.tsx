@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.scss';
 
-const imgSrc = require('./download.png');
+const imgSrc = require('../../assets/qrcode.png');
 
 interface IProps {
   active: boolean;

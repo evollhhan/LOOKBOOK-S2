@@ -4,9 +4,13 @@ html,body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#app {
+  font-family: 'Basic', Arial, Helvetica, sans-serif;
+}
+
 @font-face {
   font-family: 'Basic';
-  src: url('./assets/HelveticaNeueThin.ttf');
+  src: url('./assets/font.ttf');
 }
 
 @media screen and (max-width: 750px) {
