@@ -21,7 +21,7 @@ export default function About (props: IProps) {
         <div>EMAIL: <a href="mailto:mspathen@outlook.com">mspathen@outlook.com</a></div>
         <div>GITHUB: <a href="https://github.com/evollhhan">https://github.com/evollhhan</a></div>
       </div>
-      <p>2019.8 v1.5</p>
+      <p>2019.8 v1.0.6</p>
       <p className={style.copyright}>Resource Copyright</p>
       <p className={style.copyright}><a href="https://www.freepik.com/free-photos-vectors/design">Design vector created by freepik - www.freepik.com</a></p>
     </div>
