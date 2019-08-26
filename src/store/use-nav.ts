@@ -16,7 +16,7 @@ function useNav () {
   const selectNav = useCallback((idx: number) => {
     setMobileNavStatus(false);
     updateSelectedNav(nav[idx].title);
-    setTimeout(() => ObserveContent.forceUpdate());
+    setTimeout(() => ObserveContent.forceUpdate(), 500);
     update();
   }, []);
 
