@@ -1,5 +1,6 @@
 let parent: HTMLElement | null = null;
 let checkList: ObserveContent[] = [];
+let mobileDisplay: boolean = window.innerWidth <= 750;
 let scrollTop: number = 0;
 let scrollIndex: number = 0;
 // @ts-ignore
@@ -50,10 +51,20 @@ function setTransformPosition (direction: number) {
 }
 
 window.onresize = function () {
-  if (window.innerWidth < 750) {
+  if (window.innerWidth <= 750) {
     scrollIndex = 0;
     parent!.style.transform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
     parent!.style.webkitTransform = `translate3d(0, ${scrollIndex * 100}vh, 0)`;
+
+    if (!mobileDisplay) {
+      mobileDisplay = true;
+      ObserveContent.checkPositions();
+    }
+  } else {
+    if (mobileDisplay) {
+      mobileDisplay = false;
+      ObserveContent.forceUpdate();
+    }
   }
 }
 
@@ -72,10 +83,17 @@ export default class ObserveContent {
 
   static forceUpdate () {
     if (!downGrade) return;
+    if (window.innerWidth > 750) {
+      setTransformPosition(99);
+    }
+    checkScrollPosition();
+  }
+
+  static checkPositions () {
+    if (!downGrade) return;
     checkList.forEach(target => {
       target.updatePosition();
     })
-    checkScrollPosition();
   }
   
   static setTransformPosition (direction: number) {
@@ -88,7 +106,8 @@ export default class ObserveContent {
 
   observe () {
     if (downGrade) {
-      this.position = this.target.getBoundingClientRect().top;
+      // this.position = this.target.getBoundingClientRect().top;
+      this.updatePosition();
       checkList.push(this);
       checkScrollPosition();
     } else {
